@@ -1,5 +1,9 @@
 const initialState = {
     value: 0,
+    properties: {
+        a: 5,
+        b: 3,
+    }
 }
 
 const counterEl = document.getElementById("counter");
@@ -48,6 +52,20 @@ function createReducer(state = initialState, action) {
             ...state,
             value: state.value - action.payload,
         }
+    }
+
+    else if (action.type === ITEST) {
+        const updateCopied = {
+            ...state,
+            properties: {
+                ...state.properties,
+                b: state.properties.b + 1,
+
+            }
+
+        }
+
+        return updateCopied;
     }
     else { return state }
 }
